@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+    public UserServiceImpl(){}
 
     @Override
     public boolean insert(User user) {
