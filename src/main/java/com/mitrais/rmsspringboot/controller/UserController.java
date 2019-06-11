@@ -28,10 +28,15 @@ public class UserController {
         return "list";
     }
 
+    @GetMapping("/signup")
+    public String showSignUpForm(User user) {
+        return "add-user";
+    }
+
     @PostMapping("/adduser")
     public String addUser(@Valid User user, BindingResult result, Model model){
         if (result.hasErrors()){
-            return "list";
+            return "add-user";
         }
         userService.insert(user);
         model.addAttribute("users", userService.findAll());
