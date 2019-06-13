@@ -1,5 +1,6 @@
 package com.mitrais.rmsspringboot.controller;
 
+import com.mitrais.rmsspringboot.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,5 +14,9 @@ public class IndexController {
     @GetMapping("/login")
     public String showLoginPage(){
         return "views/login";
+    }
+    @GetMapping("/signup")
+    public String showListPage(User user){
+        return "views/register";
     }
 }

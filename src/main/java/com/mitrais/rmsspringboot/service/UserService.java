@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface UserService {
     boolean insert(User user);
- //   boolean update(String name, String password, String email);
-//    boolean delete(Long id);
+    boolean update(String name, String password, String email);
+    boolean delete(String email);
     List<User> findAll();
-//    Optional<User> findById(Long id);
+    Optional<User> findByEmail(String email);
 }

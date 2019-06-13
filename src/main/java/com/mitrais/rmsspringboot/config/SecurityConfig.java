@@ -15,8 +15,14 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
     DataSource dataSource;
+
+    @Autowired
+    public SecurityConfig(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -30,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure (HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/css/**", "/webjars/**").permitAll()
-                .antMatchers("/users/signup", "/users/adduser", "/", "/login").permitAll()
+                .antMatchers("/signup", "/users/register", "/", "/login").permitAll()
                 .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll()
                 .defaultSuccessUrl("/users/list").and().logout().logoutSuccessUrl("/login");
     }

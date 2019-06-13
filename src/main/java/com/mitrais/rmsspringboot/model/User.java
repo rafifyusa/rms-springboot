@@ -34,6 +34,12 @@ public class User {
         this.email = email;
     }
 
+    public User(@NotEmpty @Email String email, @NotEmpty String name, @Size(min = 4) String password) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+    }
+
     public String getName() {
         return name;
     }

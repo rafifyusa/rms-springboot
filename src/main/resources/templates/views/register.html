@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragments/main_layout}">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragments/main_layout}">
 <head>
     <meta charset="UTF-8">
-    <title>Add User Page</title>
+    <title>Register Page</title>
 </head>
 <body>
 <div  layout:fragment="content" class="container mySpace">
-    <form action="#" th:action="@{/users/adduser}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/users/register}" th:object="${user}" method="post">
         <div class="form-group">
             <label for="email" class="form-control-label">Email</label>
             <input type="text" class="form-control" th:field="*{email}" id="email" placeholder="Email">

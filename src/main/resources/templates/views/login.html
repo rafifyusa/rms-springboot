@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragments/main_layout}">
 
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" th:href="@{css/style.css}" />
-
-    <link type="text/css" rel="stylesheet" href="../../static/css/materia/bootstrap.min.css"  th:href="@{css/materia/bootstrap.min.css}" />
-    <script th:src="@{webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--<div layout:fragment="content" class="container mySpace">-->
+<div layout:fragment="content" class="container mySpace">
+<!--<div class="container mySpace">-->
     <form action="#" th:action="@{/login}" method="post">
         <div class="form-group">
             <label for="name" class="form-control-label">Name</label>
@@ -23,8 +18,9 @@
             <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login"  class="btn btn-primary">
     </form>
+</div>
 <!--</div>-->
 </body>
 </html>

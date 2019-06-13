@@ -40,44 +40,63 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-/*    @Transactional
-    @Override
-    public boolean update(String name, String password, Long id) {
+    public boolean insertAdmin(User user) {
         try {
-             userRepository.updateUser(name, password, id);
-             return true;
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            user.setPassword(encoder.encode(user.getPassword()));
+
+            Role role = new Role("ADMIN");
+            List<Role> roles = new ArrayList<>();
+            roles.add(role);
+            user.setRoles(roles);
+            userRepository.save(user);
+            return true;
+
+        }catch (RuntimeException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Transactional
+    @Override
+    public boolean update(String name, String password, String email) {
+        try {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            userRepository.updateUser(name, encoder.encode(password), email);
+            return true;
         }
         catch (RuntimeException e){
             e.printStackTrace();
             return false;
         }
-    }*/
+    }
 
-/*    @Transactional
+    @Transactional
     @Override
-    public boolean delete(Long id) {
+    public boolean delete(String email) {
         try {
-            userRepository.deleteById(id);
+            userRepository.deleteUserByEmail(email);
             return true;
         }
         catch (RuntimeException e) {
             e.printStackTrace();
             return false;
         }
-    }*/
+    }
 
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
     }
 
-/*    @Override
-    public Optional<User> findById(Long id) {
+    @Override
+    public Optional<User> findByEmail(String email) {
         try {
-            return userRepository.findById(id);
+            return userRepository.findUserByEmail(email);
         } catch (RuntimeException e) {
             e.printStackTrace();
             return Optional.empty();
         }
-    }*/
+    }
 }
